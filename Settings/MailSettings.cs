@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace shredhousepage.Models
+{
+    public class MailSettings
+    {
+        public string Mail { get; set; }
+        public string DisplayName { get; set; }
+        public string PickupFolder { get; set; }
+        public string Host { get; set; }
+        public string Port { get; }
+        public string LocalFolder { get; set; }
+    }
+} 
