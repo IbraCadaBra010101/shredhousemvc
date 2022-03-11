@@ -20,9 +20,9 @@ namespace shredhousepage.Controllers
             return View();
         }
         [HttpPost("send")]
-        public async Task<IActionResult> SendMail([FromForm] MailRequest request)
+        public async Task<IActionResult> SendMail([FromForm] ContactFormModel request)
         {
-        
+         // map contactformmodel to mail rquest mapp and send as new object. 
             try
             {
                 await mailService.SendEmailAsync(request);

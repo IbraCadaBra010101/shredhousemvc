@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using shredhousepage.Models;
 using shredhousepage.Models.Interfaces;
+using shredhousepage.Services;
 
 namespace shredhousepage
 {
@@ -22,25 +23,8 @@ namespace shredhousepage
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //EmailServerConfiguration config = new EmailServerConfiguration
-            //{
-            //    SmtpPassword = "",
-            //    SmtpServer = "",
-            //    SmtpUsername = ""
-            //};
-
-            //EmailAddress FromEmailAddress = new EmailAddress
-            //{
-            //    Address = "ibma010101@gmail.com",
-            //    Name = "Ibrahim Mahdi"
-            //};
-
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
-
-            //services.AddSingleton<EmailServerConfiguration>(config);
-            //services.AddTransient<IEmailService, Services.>();
-            //services.AddSingleton<EmailAddress>(FromEmailAddress);
-          
+            services.AddScoped <IMailService,MailService> ();
             services.AddMvc();
             services.AddControllersWithViews();
             services.AddMvc();
