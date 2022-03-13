@@ -1,0 +1,70 @@
+﻿
+@model shredhousepage.Models.ContactFormModel
+
+<section id="contact_wrapper" class="wrapper">
+    <div id="contact">
+        <h2>Any shred, any colour</h2>
+        <p>
+            We offer an extensive range of shredded paper colours. We can even custom manufacture our shreds in
+            any colour to match your company brand, subject to a minimum order. All shred is shipped to you from
+            our UK-based factory. Contact us today to discuss your requirements and to arrange for samples.
+        </p>
+        <!--            <p style="font-size: 14px;">(*subject to a minimum order of 2.5 tonnes)</p>-->
+        <div class="contact_area_wrapper">
+            <div class="contact_area_email_wrapper">
+                <div class="contact_area_email">
+                    <a onclick="ga('send', 'event', { eventCategory: 'Email', eventAction: 'Clicked', eventLabel: 'Contact Form'});"
+                       href="mailto:sales@shredhouse.co.uk">sales@shredhouse.co.uk</a>
+                </div>
+            </div>
+            <div class="contact_area_phone_wrapper">
+                <div class="contact_area_phone">01672 564333</div>
+            </div>
+        </div>
+        <p>Or fill out the contact form below and one of the team will be in touch</p>
+        <div class="contact_form">
+
+            <form asp-action="Index" asp-controller="Home" method="post" id="contactform">
+                <div class="contact_input_wrapper firstname">
+                    <input type="text" asp-for="FirstName" id="firstname" value="First name *"
+                           asp-validation-for="FirstName"
+                           onFocus="if(this.value  == 'First name *') { this.value = ''; }"
+                           onBlur="if(this.value == '') { this.value = 'First name *'; }" class="required"
+                           role="input" aria-required="true" />
+                </div>
+                <div class="contact_input_wrapper lastname">
+                    <input type="text" asp-for="LastName" id="lastname" value="Last name *"
+                           asp-validation-for="LastName"
+                           onFocus="if(this.value  == 'Last name *') { this.value = ''; }"
+                           onBlur="if(this.value == '') { this.value = 'Last name *'; }" class="required"
+                           role="input" aria-required="true" />
+                </div>
+                <div class="contact_input_wrapper email">
+                    <input type="text" asp-for="Email" id="email" value="Email address *"
+                           asp-validation-for="Email"
+                           onFocus="if(this.value  == 'Email address *') { this.value = ''; }"
+                           onBlur="if(this.value == '') { this.value = 'Email address *'; }" class="required email"
+                           role="input" aria-required="true" />
+                </div>
+                <div class="contact_input_wrapper telephone">
+                    <input type="text" id="telephone" asp-for="PhoneNumber" value="Telephone number *"
+                           asp-validation-for="PhoneNumber"
+                           onFocus="if(this.value  == 'Telephone number *') { this.value = ''; }"
+                           onBlur="if(this.value == '') { this.value = 'Telephone number *'; }" class="required"
+                           role="input" aria-required="true" />
+                </div>
+                <div class="message_wrapper">
+                    <textarea rows="6" asp-for="Message" id="message" value="Your message *"
+                              asp-validation-for="Message"
+                              onFocus="if(this.value  == 'Your message *') { this.value = ''; }"
+                              onBlur="if(this.value == '') { this.value = 'Your message *'; }" class="required"
+                              role="textbox" aria-required="true"></textarea>
+                </div>
+
+                <div class="required_info">* required fields</div>
+                <input onclick="ga('send', 'event', { eventCategory: 'Contact Form', eventAction: 'Clicked', eventLabel: 'Form submission'});"
+                       type="submit" id="submit" name="submit" class="submit" value="SEND">
+            </form>
+        </div>
+    </div>
+</section>

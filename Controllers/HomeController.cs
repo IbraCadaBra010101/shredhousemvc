@@ -19,14 +19,22 @@ namespace shredhousepage.Controllers
         {
             return View();
         }
-        [HttpPost("send")]
-        public async Task<IActionResult> SendMail([FromForm] ContactFormModel request)
+
+        [HttpPost] 
+        public async Task<IActionResult> Index(ContactFormModel contactForm)
         {
          // map contactformmodel to mail rquest mapp and send as new object. 
             try
             {
-                await mailService.SendEmailAsync(request);
-                return Ok();
+                MailRequest mailRequest = new MailRequest
+                {
+                    FromEmail = contactForm.Email,
+                    Body = contactForm.FirstName +contactForm.LastName + contactForm.Message
+                   // use razor pages to format email message or fluent mail. 
+                };
+                
+                await mailService.SendEmailAsync(mailRequest);
+                return View();
             }
             catch (Exception ex)
             {

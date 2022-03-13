@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using shredhousepage.Models;
-using shredhousepage.Models.Interfaces;
 using shredhousepage.Services;
 
 namespace shredhousepage
@@ -24,7 +23,7 @@ namespace shredhousepage
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
-            services.AddScoped <IMailService,MailService> ();
+            services.AddTransient<IMailService,MailService> ();
             services.AddMvc();
             services.AddControllersWithViews();
             services.AddMvc();

@@ -553,19 +553,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\imahdi\\.nuget\\packages\\": {}
+    "C:\\Users\\46790\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\imahdi\\source\\repos\\shredhousepage\\shredhousepage.csproj",
+      "projectUniqueName": "C:\\Users\\46790\\Dropbox\\Min PC (LAPTOP-M22C1HP9)\\Desktop\\shredhousemvc\\shredhousepage.csproj",
       "projectName": "shredhousepage",
-      "projectPath": "C:\\Users\\imahdi\\source\\repos\\shredhousepage\\shredhousepage.csproj",
-      "packagesPath": "C:\\Users\\imahdi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\imahdi\\source\\repos\\shredhousepage\\obj\\",
+      "projectPath": "C:\\Users\\46790\\Dropbox\\Min PC (LAPTOP-M22C1HP9)\\Desktop\\shredhousemvc\\shredhousepage.csproj",
+      "packagesPath": "C:\\Users\\46790\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\46790\\Dropbox\\Min PC (LAPTOP-M22C1HP9)\\Desktop\\shredhousemvc\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\imahdi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\46790\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -614,6 +614,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.14, 3.1.14]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -622,7 +628,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

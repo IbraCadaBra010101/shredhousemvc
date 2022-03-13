@@ -13,6 +13,6 @@ namespace shredhousepage.Models
         public string Body { get; set; }
 
         // in case we want to upload files.
-        public List<IFormFile> Attachments { get; set; }
+        //public List<IFormFile> Attachments { get; set; }
     }
 }

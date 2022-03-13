@@ -9,8 +9,8 @@ namespace shredhousepage.Models
     {
         public string Mail { get; set; }
         public string DisplayName { get; set; }
-        public string PickupFolder { get; set; }
-        public string Host { get; set; }
+        public string Password { get; set; }
+        public string Host { get; set; }  
         public string Port { get; }
         public string LocalFolder { get; set; }
     }
