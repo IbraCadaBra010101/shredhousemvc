@@ -42,27 +42,5 @@ namespace shredhousepage.Controllers
             }
 
         }
-        //[HttpPost]
-        //public async Task<IActionResult> SendMail(MailRequest model)
-        //{
-
-
-        //    //if (ModelState.IsValid)
-        //    //{
-        //    //    //ContactFormModel msgToSend = new ContactFormModel
-        //    //    //{
-        //    //    //    FirstName = model.FirstName,
-        //    //    //    LastName = model.LastName,
-        //    //    //    Email = model.Email
-        //    //    //};
-
-        //    //    EmailService.SendEmailAsync(msgToSend);
-        //    //    return RedirectToAction("Index");
-        //    //}
-        //    //else
-        //    //{
-        //    //    return Index();
-        //    //}
-        //}
     }
 }

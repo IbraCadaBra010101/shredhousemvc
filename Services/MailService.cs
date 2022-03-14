@@ -1,9 +1,12 @@
-﻿using MailKit.Net.Smtp;
-using Microsoft.Extensions.Options;
-using MimeKit;
-using shredhousepage.Models;
-
+﻿using FluentEmail.Core;
+using FluentEmail.Razor;
+using FluentEmail.Smtp;
+using System.Net.Mail;
+using System.Text;
 using System.Threading.Tasks;
+using shredhousepage.Models;
+using MimeKit;
+using Microsoft.Extensions.Options;
 
 namespace shredhousepage.Services
 {
@@ -18,18 +21,40 @@ namespace shredhousepage.Services
         public MailSettings Options { get; set; } 
         public async Task SendEmailAsync(MailRequest mailRequest)
         {
-            var email = new MimeMessage();
-            email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-            email.From.Add(new MailboxAddress(mailRequest.Body, _mailSettings.Mail));
-            email.To.Add(new MailboxAddress(_mailSettings.DisplayName, _mailSettings.Mail));
-            var builder = new BodyBuilder();
+           
+            //email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
+            //email.From.Add(new MailboxAddress(mailRequest.Body, _mailSettings.Mail));
+            //email.To.Add(new MailboxAddress(_mailSettings.DisplayName, _mailSettings.Mail));
+            //var builder = new BodyBuilder();
       
-            builder.HtmlBody = mailRequest.Body;
-            email.Body = builder.ToMessageBody();
-            using var smtp = new SmtpClient();
-            smtp.Connect(_mailSettings.Host, 25, false);
-            smtp.Send(email);
-            smtp.Disconnect(true);
+            //builder.HtmlBody = mailRequest.Body;
+            //email.Body = builder.ToMessageBody();
+
+            // send to local folder
+            var sender = new SmtpSender(() => new SmtpClient(_mailSettings.Host)
+            {
+                EnableSsl = false,
+                //DeliveryMethod = SmtpDeliveryMethod.Network,
+                Port = 25,
+                DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory,
+                PickupDirectoryLocation = _mailSettings.LocalFolder
+            });
+
+            Email.DefaultSender = sender;
+            Email.DefaultRenderer = new RazorRenderer();
+
+            var email = await Email
+               .From(mailRequest.FromEmail)
+               .To(_mailSettings.Mail, _mailSettings.DisplayName)
+               .Subject("Contactform!")
+               .Body(mailRequest.Body)
+               .SendAsync();
+
+            //using var smtp = new SmtpClient(); 
+
+            //smtp.Connect(_mailSettings.Host, 25, false);
+            //smtp.Send(email);
+            //smtp.Disconnect(true);
 
         }
     }
